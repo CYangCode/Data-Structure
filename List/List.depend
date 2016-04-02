@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1459603522 source:d:\codes\codeblocks projects\list\main.c
+	"include/List.h"
+	"ArrayList.h"
+
+1459526317 source:d:\codes\codeblocks projects\list\arraylist.cpp
+	"ArrayList.h"
+
+1459568921 d:\codes\codeblocks projects\list\arraylist.h
+
+1459526218 source:d:\codes\codeblocks projects\list\src\list.c
+	"List.h"
+
+1459526205 d:\codes\codeblocks projects\list\include\list.h
+	<stdio.h>
+	<stdlib.h>
+
+1459604119 source:d:\codes\codeblocks projects\list\src\arraylist.c
+	"ArrayList.h"
+	<stdlib.h>
+	<stdio.h>
+
+1459599221 d:\codes\codeblocks projects\list\include\arraylist.h
+
