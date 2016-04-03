@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1459673901 source:d:\codes\codeblocks projects\data-structure\evaluateexpression\main.cpp
+	<iostream>
+	<string.h>
+
