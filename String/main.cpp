@@ -6,12 +6,9 @@ using namespace std;
 int main()
 {
     //test
-    String str("asdf");
-    str += "ABN";
-    str + "jjjj";
-    str.append("1234");
-    str.append("fjjf");
-    str += 12354.123;
+    String str = "hello world";
+    str += ", you are my world! ";
+    str.subString()
     cout << str;
     return 0;
 }
