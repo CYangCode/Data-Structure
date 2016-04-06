@@ -63,7 +63,7 @@ int String::length() const
 void String::append(String str)
 {
     int newStrLen = this->size + str.size;
-    char * temp = new char[newStrLen];
+    char * temp = new char[newStrLen + 1];
     int i;
     for (i = 0; i < this->size; ++i) {
         temp[i] = baseStr[i];
@@ -85,7 +85,7 @@ void String::clear()
 
 String String::subString(int s, int e)
 {
-    if (s > e) return "";
+    if (s > e || s < 0 || e >= size) return "";
     int length = e - s + 1;
     char * str = new char[length + 1];
     for (int i = 0; i < length; ++i) {
