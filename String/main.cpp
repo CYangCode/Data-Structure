@@ -10,20 +10,21 @@ int strlen(char * str)
     for (i = 0; str[i]; ++i);
     return i;
 }
-//abaabc
-int * getNextArray(char * t)
+
+int * getNext(char * t)
 {
     int len = strlen(t);
-    int i = 1, j = 0;
     int * next = new int[len];
     next[0] = -1;
-    while (i < len) {
-        if (j == 0 || t[i - 1] == t[j - 1]) {
-            ++i;
-            ++j;
-            next[i - 1] = j - 1;
+    int i = 0, j = -1;
+    while (i < len)
+    {
+        if (j == -1 || t[i] == t[j]) {
+            ++i; ++j;
+            if (t[i] != t[j]) next[i] = j;
+            else next[i] = next[j];
         } else {
-            j = next[j - 1] + 1;
+            j = next[j];
         }
     }
     return next;
@@ -32,7 +33,10 @@ int * getNextArray(char * t)
 int kmp(char * s, char * t, int pos)
 {
     int i = pos, j = 0;
-    int * next = getNextArray(t);
+    int * next = getNext(t);
+    for (int k = 0; k < strlen(t); ++k) {
+        cout << next[k] << endl;
+    }
     cout << endl;
     int sLen = strlen(s), tLen = strlen(t);
     while (i < sLen && j < tLen) {
@@ -40,13 +44,14 @@ int kmp(char * s, char * t, int pos)
         else j = next[j];
     }
     if (j >= tLen) return i - tLen;
+    delete[] next;
     return 0;
 }
 
 int main()
 {
     //test
-    int result = kmp("acabaabaabcacaabc", "abaabc", 0);
+    int result = kmp("acabaaaabaaaabcacaabc", "aaaabc", 0);
     cout << result << endl;
     return 0;
 }
