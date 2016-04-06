@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1459960258 source:d:\codes\codeblocks projects\data-structure\string\main.cpp
+1459961597 source:d:\codes\codeblocks projects\data-structure\string\main.cpp
 	<iostream>
 	"String.h"
 
-1459960042 d:\codes\codeblocks projects\data-structure\string\include\string.h
+1459962354 d:\codes\codeblocks projects\data-structure\string\include\string.h
 	<iostream>
 
-1459960355 source:d:\codes\codeblocks projects\data-structure\string\src\string.cpp
+1459961713 source:d:\codes\codeblocks projects\data-structure\string\src\string.cpp
 	"String.h"
 	<sstream>
 

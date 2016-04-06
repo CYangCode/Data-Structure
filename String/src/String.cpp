@@ -26,8 +26,7 @@ String::String(const String & str)
 
 String String::copy()
 {
-    String str(*this);
-    return str;
+    return *this;
 }
 
 void String::copyStr(char* str)
@@ -44,7 +43,7 @@ int String::isEmpty() const
     return size == 0;
 }
 
-int String::equal(String str) const
+int String::equals(const String & str) const
 {
     if (size != str.size) return false;
     for (int i = 0; i < size; ++i) {
@@ -60,7 +59,7 @@ int String::length() const
     return this->size;
 }
 
-void String::append(String str)
+void String::append(const String & str)
 {
     int newStrLen = this->size + str.size;
     char * temp = new char[newStrLen + 1];
@@ -180,14 +179,14 @@ String String::operator+(String other)
     return str;
 }
 
-String String::operator+=(String other)
+String & String::operator+=(String other)
 {
     append(other);
     return *this;
 }
 
 
-String String::operator=(String other)
+String & String::operator=(String other)
 {
     clear();
     size = other.size;
@@ -207,7 +206,7 @@ String String::operator+(int other)
     return returnedStr;
 }
 
-String String::operator+=(int other)
+String & String::operator+=(int other)
 {
     return (*this) = (*this) + other;
 }
@@ -224,7 +223,7 @@ String String::operator+(double other)
     return returnedStr;
 }
 
-String String::operator+=(double other)
+String & String::operator+=(double other)
 {
     return (*this) = (*this) + other;
 }
@@ -241,7 +240,7 @@ String String::operator+(char other)
     return returnedStr;
 }
 
-String String::operator+=(char other)
+String & String::operator+=(char other)
 {
     return (*this) = (*this) + other;
 }
@@ -251,13 +250,13 @@ char String::operator[](int n)
     return charAt(n);
 }
 
-ostream& operator<<(ostream & stream,String other)
+ostream& operator<<(ostream & stream,const String & other)
 {
     stream << other.baseStr;
     return stream;
 }
 
-istream& operator>>(istream & stream, String other)
+istream& operator>>(istream & stream, String & other)
 {
     other.size = stream.width();
     other.baseStr = new char[other.size];
