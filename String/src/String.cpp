@@ -95,6 +95,38 @@ String String::subString(int s, int e)
     return str;
 }
 
+int String::index(String t, int pos)
+{
+    //获得next数组
+    int * next = new int[t.size];
+    int i = 0, j = -1;
+    next[0] = -1;
+    while (i < t.size) {
+        if (j == -1 || t[i] == t[j]) {
+            ++i; ++j;
+            if (t[i] != t[j]) next[i] = j;
+            else next[i] = next[j];
+        }
+        else {
+            j = next[j];
+        }
+    }
+    //找到匹配的串
+    i = pos; j = 0;
+    while (i < this->size && j < t.size) {
+        if (j == -1 || baseStr[i] == t[j]) {
+            ++i; ++j;
+        }
+        else {
+            j = next[j];
+        }
+    }
+    if (j >= t.size) return i - t.size;
+    delete[] next;
+    return 0;
+}
+
+
 char String::charAt(int index) const
 {
     if (index >= size) return '\0';

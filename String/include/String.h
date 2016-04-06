@@ -29,6 +29,8 @@ class String
         void clear();
         //子串默认位置是开始位置 s 为0，结束位置为length - 1，即整个字符串
         String subString(int s, int e);
+        //使用KMP算法获得从位置pos之后找到匹配模式串的第一个母串位置
+        int index(String t, int pos);
         //得到指定位置的字符
         char charAt(int index) const;
         //返回一个新的字符数组
