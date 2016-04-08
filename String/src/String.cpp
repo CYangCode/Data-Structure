@@ -32,7 +32,8 @@ String String::copy()
 void String::copyStr(char* str)
 {
     baseStr = new char[size + 1];
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; ++i)
+    {
         baseStr[i] = str[i];
     }
     baseStr[size] = 0;
@@ -46,8 +47,10 @@ int String::isEmpty() const
 int String::equals(const String & str) const
 {
     if (size != str.size) return false;
-    for (int i = 0; i < size; ++i) {
-        if (baseStr[i] != str.baseStr[i]) {
+    for (int i = 0; i < size; ++i)
+    {
+        if (baseStr[i] != str.baseStr[i])
+        {
             return false;
         }
     }
@@ -64,10 +67,12 @@ void String::append(const String & str)
     int newStrLen = this->size + str.size;
     char * temp = new char[newStrLen + 1];
     int i;
-    for (i = 0; i < this->size; ++i) {
+    for (i = 0; i < this->size; ++i)
+    {
         temp[i] = baseStr[i];
     }
-    for (;i < newStrLen; ++i) {
+    for (; i < newStrLen; ++i)
+    {
         temp[i] = str.baseStr[i - this->size];
     }
     temp[i] = 0;
@@ -87,7 +92,8 @@ String String::subString(int s, int e)
     if (s > e || s < 0 || e >= size) return "";
     int length = e - s + 1;
     char * str = new char[length + 1];
-    for (int i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i)
+    {
         str[i] = baseStr[i + s];
     }
     str[length] = 0;
@@ -100,28 +106,37 @@ int String::index(String t, int pos)
     int * next = new int[t.size];
     int i = 0, j = -1;
     next[0] = -1;
-    while (i < t.size) {
-        if (j == -1 || t[i] == t[j]) {
-            ++i; ++j;
+    while (i < t.size)
+    {
+        if (j == -1 || t[i] == t[j])
+        {
+            ++i;
+            ++j;
             if (t[i] != t[j]) next[i] = j;
             else next[i] = next[j];
         }
-        else {
+        else
+        {
             j = next[j];
         }
     }
     //ÕÒµ½Æ¥ÅäµÄ´®
-    i = pos; j = 0;
-    while (i < this->size && j < t.size) {
-        if (j == -1 || baseStr[i] == t[j]) {
-            ++i; ++j;
+    i = pos;
+    j = 0;
+    while (i < this->size && j < t.size)
+    {
+        if (j == -1 || baseStr[i] == t[j])
+        {
+            ++i;
+            ++j;
         }
-        else {
+        else
+        {
             j = next[j];
         }
     }
-    if (j >= t.size) return i - t.size;
     delete[] next;
+    if (j >= t.size) return i - t.size;
     return 0;
 }
 
@@ -139,9 +154,11 @@ char * String::toCharArray()
 
 String String::toUpperCase()
 {
-     String des(*this);
-     for (int i = 0; i < size; ++i) {
-        if (des.baseStr[i] >= 'a' && des.baseStr[i] <= 'z') {
+    String des(*this);
+    for (int i = 0; i < size; ++i)
+    {
+        if (des.baseStr[i] >= 'a' && des.baseStr[i] <= 'z')
+        {
             des.baseStr[i] -= 32;
         }
     }
@@ -150,9 +167,11 @@ String String::toUpperCase()
 
 String String::toLowerCase()
 {
-     String des(*this);
-     for (int i = 0; i < size; ++i) {
-        if (des.baseStr[i] >= 'A' && des.baseStr[i] <= 'Z') {
+    String des(*this);
+    for (int i = 0; i < size; ++i)
+    {
+        if (des.baseStr[i] >= 'A' && des.baseStr[i] <= 'Z')
+        {
             des.baseStr[i] += 32;
         }
     }

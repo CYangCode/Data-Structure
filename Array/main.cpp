@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ int main()
     const int N = 5;
     const int O = 4;
     const int P = 20;
+    char * hello = "heellofdasjflksdaj";
     int array[M][N][O][P];
     int array2[M * N * O * P];
     int num = 0;
