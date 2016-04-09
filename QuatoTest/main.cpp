@@ -1,23 +1,22 @@
 #include <iostream>
 using namespace std;
 
-class A
+int f(int & a)
 {
-public:
-    int a;
-    A()
-    {
-        a = 20;
-        cout << "a" << endl;
-    }
-};
+    cout << "左值引用：" << a << endl;
+    return a;
+}
 
-class B
+int f(int && a)
 {
-public:
-    static A a;
-};
-A B::a;
+    cout << "右值引用：" << ++a << endl;
+    return a;
+}
+
 int main()
 {
+    int a = 1;
+    f(a);
+    cout << a;
+    return 0;
 }

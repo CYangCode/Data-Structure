@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-    String str("希望世界美好！");
+    String str("A good day！");
+    str = "fadskfasd";
     cout << str;
     return 0;
 }

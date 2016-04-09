@@ -1,10 +1,13 @@
 # depslib dependency file v1.0
-1460119568 source:d:\codes\codeblocks projects\data-structure\glist\src\glist.cpp
+1460207983 source:d:\codes\codeblocks projects\data-structure\glist\src\glist.cpp
 	"GList.h"
+	<string.h>
 
-1460164471 d:\codes\codeblocks projects\data-structure\glist\include\glist.h
+1460207435 d:\codes\codeblocks projects\data-structure\glist\include\glist.h
 	<iostream>
 
-1460165866 source:d:\codes\codeblocks projects\data-structure\glist\main.cpp
+1460207992 source:d:\codes\codeblocks projects\data-structure\glist\main.cpp
 	<iostream>
+	"GList.h"
+	<string.h>
 

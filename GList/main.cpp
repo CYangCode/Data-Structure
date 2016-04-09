@@ -1,37 +1,14 @@
 #include <iostream>
+#include "GList.h"
+#include <string.h>
 using namespace std;
-
-struct B
-{
-    int a;
-    short aa;
-    double b;
-    float c;
-};
-
-struct A
-{
-    int a;
-    double b;
-    short c;
-    B d;
-    char e[2];
-};
-
-struct C
-{
-    short s;
-    int a;
-    short ss;
-    double b;
-    short c;
-    int aa;
-    double bb;
-    float cc;
-    char e[2];
-};
 
 int main()
 {
-    cout << sizeof(A) << " " << sizeof(C) << endl;
+    char * str = "(a,((b,c),d),(e,f))";
+  //  char * str = "(a,b,c,d,e,f)";
+    GList list(str);
+    GList list2 = list.copy();
+    list2.travel();
+    cout << list2.depth();
 }

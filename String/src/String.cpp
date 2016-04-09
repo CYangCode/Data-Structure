@@ -205,11 +205,13 @@ String & String::operator+=(String other)
 }
 
 
-String & String::operator=(String other)
+String & String::operator=(const String& other)
 {
-    clear();
-    size = other.size;
-    copyStr(other.baseStr);
+    if (this != &other) {
+        clear();
+        size = other.size;
+        copyStr(other.baseStr);
+    }
     return *this;
 }
 

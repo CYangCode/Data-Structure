@@ -55,8 +55,8 @@ class String
         String operator+(char other);
         //重载+=号
         String & operator+=(char other);
-        //重载等号
-        String & operator=(String other);
+        //重载等号,右值引用
+        String & operator=(const String& other);
         //重载[]
         char operator[](int n);
         //重载输出流
