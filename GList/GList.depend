@@ -2,9 +2,9 @@
 1460119568 source:d:\codes\codeblocks projects\data-structure\glist\src\glist.cpp
 	"GList.h"
 
-1460119849 d:\codes\codeblocks projects\data-structure\glist\include\glist.h
-
-1460129322 source:d:\codes\codeblocks projects\data-structure\glist\main.cpp
+1460164471 d:\codes\codeblocks projects\data-structure\glist\include\glist.h
 	<iostream>
-	<stdio.h>
+
+1460165866 source:d:\codes\codeblocks projects\data-structure\glist\main.cpp
+	<iostream>
 
