@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1460274186 source:d:\codes\codeblocks projects\data-structure\binarytree\src\binarytree.cpp
+	"BinaryTree.h"
+
+1460274186 d:\codes\codeblocks projects\data-structure\binarytree\include\binarytree.h
+
+1460292749 source:d:\codes\codeblocks projects\data-structure\binarytree\main.cpp
+	<iostream>
+	<string.h>
+
