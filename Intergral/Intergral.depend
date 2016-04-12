@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1460469706 source:d:\codes\codeblocks projects\data-structure\intergral\main.cpp
+	<iostream>
+	<stdio.h>
+	<iomanip>
+
