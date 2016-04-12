@@ -45,8 +45,8 @@ BNode * createBiTree(char * str, int && i)
 void destroy(BNode * root)
 {
     if (root == nullptr) return;
-    destroy(root->lchild);
-    destroy(root->rchild);
+    if (root->rtag == Link) destroy(root->lchild);
+    if (root->ltag == Link) destroy(root->rchild);
     delete root;
 }
 
@@ -59,9 +59,9 @@ void destroy(BNode * root)
 void travel(BNode * root)
 {
     if (root == nullptr) return;
-    travel(root->lchild);
+    if (root->ltag == Link) travel(root->lchild);
+    if (root->rtag == Link) travel(root->rchild);
     cout << root->data;
-    travel(root->rchild);
 }
 
 BNode * pre = nullptr;
@@ -119,27 +119,25 @@ BNode * search(BNode * root, char ch)
 void myInOrderTheading(BNode * root)
 {
     if (root == nullptr) return;
+    if (!root->lchild) root->ltag = Thread;
+    if (!root->rchild) root->rtag = Thread;
     myInOrderTheading(root->lchild);
     myInOrderTheading(root->rchild);
     BNode * p = nullptr;
+    //找到左子树的最右下节点
     for (p = root->lchild; p && p->rchild; p = p->rchild);
-    if (p)
-    {
-        p->rtag = Thread;
-        p->rchild = root;
-    }
+    if (p) p->rchild = root;
+    //找到右子树最左下角的节点
     for (p = root->rchild; p && p->lchild; p = p->lchild);
-    if (p)
-    {
-        p->ltag = Thread;
-        p->lchild = root;
-    }
+    if (p) p->lchild = root;
 }
 
 int main()
 {
     BNode * root = createBiTree("-+a##*b##-c##d##/e##f##", 0);
     myInOrderTheading(root);
+    travel(root);
+    cout << endl;
     char ch;
     while (cin >> ch && ch != '#')
     {
@@ -157,4 +155,5 @@ int main()
         }
 
     }
+    destroy(root);
 }
