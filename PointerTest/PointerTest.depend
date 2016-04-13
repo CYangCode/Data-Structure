@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1460618355 source:d:\codes\codeblocks projects\data-structure\pointertest\main.cpp
+	<iostream>
+	<stdio.h>
+

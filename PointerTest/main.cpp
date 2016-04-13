@@ -3,9 +3,31 @@
 
 using namespace std;
 
+class A
+{
+private:
+    int a = 10;
+};
+
+int test2()
+{
+   int a[6]={1,2,3,4,5,6};
+   int *ptr1=(int *)(&a+1);
+   int *ptr2=(int *)((int)a + 1);
+   printf("%d,%d",ptr1[-1],*ptr2);
+   return 0;
+}
+
 int main()
 {
-    //数组的末尾位置是确定，但首位的位置会随着数组的长度而改变
+    A a;
+    void * addr = &a;
+    cout << *(int *)addr << endl;
+}
+
+int test()
+{
+        //数组的末尾位置是确定，但首位的位置会随着数组的长度而改变
    int a[6]={1,2,3,4,5,6};
    int * ptr = (int *)(a + 1);
    //ptr1指向数组的末尾 + 1

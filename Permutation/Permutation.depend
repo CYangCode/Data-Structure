@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1460657208 source:d:\codes\codeblocks projects\data-structure\permutation\main.cpp
+	<iostream>
+	<list>
+
