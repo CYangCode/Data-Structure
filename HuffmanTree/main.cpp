@@ -12,36 +12,21 @@ struct TreeNode
     int num;//出现的次数
     char code;//二进制编码对应的字符
     TreeNode * lchild, * rchild;
-    TreeNode(): ch('$'), num(0), lchild(nullptr), rchild(nullptr) {}
     TreeNode(char _ch, int _num):ch(_ch), num(_num), lchild(nullptr), rchild(nullptr) {}
-    TreeNode(TreeNode * lc, TreeNode * rc): ch('$'), lchild(lc), rchild(rc)
-    {
-        num = lc->num + rc->num;
-    }
+    TreeNode(TreeNode * lc, TreeNode * rc): ch('$'), lchild(lc), rchild(rc) {if (lchild && rchild) num = lc->num + rc->num;}
 };
 
 class Comparer
 {
 public:
-    bool operator()(const TreeNode * first, const TreeNode * second)
-    {
-        return first->num > second->num;
-    }
+    bool operator()(const TreeNode * first, const TreeNode * second) { return first->num > second->num;}
 };
 
 string itoa(int num, int radix)
 {
     string str = "0123456789ABCDEFGHI";
-    string result = "";
-
-    while (num)
-    {
-        result += str[num % radix];
-        num /= radix;
-    }
-    if (radix == 16) result += "x0";
-    reverse(result.begin(), result.end());
-    return result;
+    if (num / radix == 0) return string("") + str[num];
+    return itoa(num / radix, radix) + str[num % radix];
 }
 
 TreeNode * CreateHuffman(const hash_map<char, int> & char_map)
@@ -76,9 +61,8 @@ hash_map<char, char> GetCodeMap(hash_map<char, int> char_map)
 {
     TreeNode * rhead = CreateHuffman(char_map);
     hash_map<char, char> code_map;
-    TreeNode * head = new TreeNode;
     //二进制01和1对应的字符相同,所以将整棵树变成右子树
-    head->rchild = rhead;
+    TreeNode * head = new TreeNode(nullptr, rhead);
     Coding(head, 0, code_map);
     return code_map;
 }
@@ -88,16 +72,9 @@ int main()
     hash_map<char, int> char_map;
     string str;
     getline(cin, str);
-    for (char ch: str)
-    {
-        if (!char_map[ch]) char_map[ch] = 1;
-        else ++char_map[ch];
-    }
+    for (char ch: str) ++char_map[ch];
     const hash_map<char, char> & code_map = GetCodeMap(char_map);
-    for (auto elem: code_map)
-    {
-        cout << elem.first << " " << itoa(elem.second, 2) << endl;
-    }
+    for (auto elem: code_map) cout << elem.first << " " << itoa(elem.second, 2) << endl;
     return 0;
 }
 
