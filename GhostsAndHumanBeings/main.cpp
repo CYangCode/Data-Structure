@@ -43,28 +43,26 @@ public:
  */
 int methods[5][2] = {{0, 1}, {1, 0}, {1, 1}, {2, 0}, {0, 2}};
 Vector vec;
-State * CrossRiver(int ln, int lm, int rn, int rm, int is_boat_left)
+void * CrossRiver(int ln, int lm, int rn, int rm, int is_boat_left)
 {
     if (ln < 0 || lm < 0 || rn < 0 || rm < 0) return nullptr;
     if (ln == 0 && lm == 0)
     {
         vec.push_back(State(ln, lm, is_boat_left));
-        //  cout << "("<< ln << ", " << lm << ") "<< " (" << rn << ", " << rm << ")" << (is_boat_left? "×ó°¶": "ÓÒ°¶") << endl;
         return new State(0, 0, is_boat_left);
     }
     if ((ln != 0 && lm > ln) || (rn != 0 && rm > rn)) return nullptr;
-    State * state = new State(ln, lm, is_boat_left);
-    if (vec.find(*state)) return nullptr;
-    vec.push_back(*state);
-    cout << "("<< ln << ", " << lm << ") "<< " (" << rn << ", " << rm << ")" << (is_boat_left? "×ó°¶": "ÓÒ°¶") << endl;
+    State state(ln, lm, is_boat_left);
+    if (vec.find(state)) return nullptr;
+    vec.push_back(state);
     for (int i = 0; i < 5; ++i)
     {
         if (is_boat_left)
-            state->next = CrossRiver(ln - methods[i][0], lm - methods[i][1], rn + methods[i][0], rm + methods[i][1], 0);
+            CrossRiver(ln - methods[i][0], lm - methods[i][1], rn + methods[i][0], rm + methods[i][1], 0);
         else
-            state->next = CrossRiver(ln + methods[i][0], lm + methods[i][1], rn - methods[i][0], rm - methods[i][1], 1);
+            CrossRiver(ln + methods[i][0], lm + methods[i][1], rn - methods[i][0], rm - methods[i][1], 1);
     }
-    return state;
+   // vec.pop_back();
 }
 
 void travel(int is_left, int pos)
@@ -82,6 +80,6 @@ void travel(int is_left, int pos)
 
 int main()
 {
-    CrossRiver(4, 4, 0, 0, 1);
-    //travel(1, 0);
+    CrossRiver(3, 3, 0, 0, 1);
+    travel(1, 0);
 }

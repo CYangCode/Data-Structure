@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1461243181 source:d:\codes\codeblocks projects\data-structure\huffmantree\main.cpp
+	<iostream>
+	<hash_map>
+	<queue>
+	<algorithm>
+	<string>
+
