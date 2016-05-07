@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1462585890 source:d:\codes\codeblocks projects\data-structure\searchalgorithm\main.cpp
+	<iostream>
+	<time.h>
+	<cstdlib>
+	<ctime>
+	<algorithm>
+	<functional>
+
